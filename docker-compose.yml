@@ -1,0 +1,40 @@
+networks:
+  rede-votacao-externa:
+    driver: bridge
+
+services:
+
+  no-externo:
+    image: quorumengineering/quorum:23.4.0
+    container_name: tcc-no-externo
+    networks:
+      - rede-votacao-externa
+    ports:
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+      - "8545:8545"
+    volumes:
+      - dados-no-externo:/data
+      - ./config:/config
+    entrypoint:
+      - sh
+      - -c
+      - |
+        if [ ! -d /data/geth ]; then
+          cp /config/static-nodes.json /data/static-nodes.json
+          geth --datadir /data init /config/genesis.json
+        fi
+        exec geth \
+          --datadir /data \
+          --networkid 1337 \
+          --port 30303 \
+          --http --http.addr 0.0.0.0 --http.port 8545 \
+          --http.api eth,net,web3,istanbul \
+          --http.corsdomain "*" \
+          --http.vhosts "*" \
+          --syncmode full \
+          --verbosity 3
+    restart: unless-stopped
+
+volumes:
+  dados-no-externo:
