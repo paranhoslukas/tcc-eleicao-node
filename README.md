@@ -60,8 +60,8 @@ curl -s -X POST http://localhost:8545 \
 | Consenso      | IBFT2                        |
 | Validadores   | 4                            |
 | Bloco         | a cada 2 segundos            |
-| Host principal| paranhoslukas.ddns.net       |
-| Frontend      | paranhoslukas.ddns.net:2001  |
+| Host principal| auditvote.ddns.net       |
+| Frontend      | auditvote.ddns.net:2001  |
 
 ---
 
