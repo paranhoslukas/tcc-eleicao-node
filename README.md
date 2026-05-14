@@ -1,4 +1,4 @@
-# VoteChain — Nó Externo
+# AuditVote — Nó Externo
 
 Conecte sua máquina à rede blockchain do sistema de votação eletrônica auditável do TCC da Unianchieta.
 
@@ -18,13 +18,13 @@ Ao rodar este nó você ajuda a validar e auditar os votos registrados na rede G
 ```bash
 # 1. Clone o repositório
 git clone https://github.com/paranhoslukas/tcc-eleicao-node.git
-cd tcc-eleicao-node
+cd tcc-eleicao-blockchain-no
 
 # 2. Suba o nó
 docker compose up -d
 
 # 3. Verifique se conectou à rede
-docker logs tcc-no-externo -f
+docker logs tcc-eleicao-blockchain-no -f
 ```
 
 Você deve ver mensagens de sincronização de blocos em alguns segundos.
